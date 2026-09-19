@@ -1,0 +1,13 @@
+#!/bin/sh
+subject=$(grep -v '^#' "$1" | sed -n '1p')
+
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*) exit 0 ;;
+esac
+
+types='build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test'
+if ! printf '%s\n' "$subject" | grep -Eq "^($types)(\([a-z0-9._/-]+\))?!?: [^ ].*$"; then
+  echo "commit message does not follow Conventional Commits: $subject" >&2
+  echo "expected <type>(<scope>)!: <subject> with type in: $types" >&2
+  exit 1
+fi

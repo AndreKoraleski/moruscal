@@ -3,3 +3,6 @@ set -e
 
 echo '+cargo fmt --all -- --check'
 cargo fmt --all -- --check
+
+echo '+cargo test --all'
+cargo test --all

@@ -26,6 +26,7 @@ moruscal-core = { path = "crates/core" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
+missing_docs = "warn"
 
 [workspace.lints.clippy]
 pedantic = { level = "warn", priority = -1 }
